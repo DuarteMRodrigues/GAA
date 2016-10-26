@@ -23,7 +23,7 @@ public class Principal {
 		int balanco = totalReceitas - despesas;
 		
 		System.out.println("O valor total de receitas é: " + totalReceitas + "€\nO valor total de despesas é: " + despesas + "€");
-		System.out.println("O balanco é: " + balanco + "€... Tas lixado.");
+		System.out.println("O balanco é: " + balanco + "€... Tas lixado");
 	}
 
 }
