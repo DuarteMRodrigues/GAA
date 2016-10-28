@@ -48,7 +48,15 @@ public class BalancoGAA {
 		int balanco;
 		
 		balanco = receitas - despesas;
-		System.out.print("\n\n\nO balanço é: " + balanco + "€");
+		
+		if(balanco > 0){
+			System.out.print("\n\n\nbalanço positivo");
+		}
+		else if (balanco < 0){
+			System.out.print("\n\n\nbalanço positivo");
+		}
+		else
+			System.out.print("\n\n\nbalanço positivo");
 	}
 }
 
