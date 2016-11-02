@@ -1,3 +1,4 @@
+import dia021116.Blackjack;
 import dia021116.Calculadora;
 import dia021116.Ciclos;
 import dia021116.Condicionais;
@@ -17,7 +18,8 @@ public class Principal {
 		//new AdivinhaNumero();
 		//new Condicionais();
 		//new Ciclos();
-		new Calculadora();
+		//new Calculadora();
+		new Blackjack();
 	}
 
 }
