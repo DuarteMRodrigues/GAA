@@ -28,18 +28,27 @@ public class Condicionais {
 				num3 = 3,
 				num4 = 8;
 		
+		if(num1 > num2 && num1 > num3){
+			System.out.println("O número 1 é o maior");
+		}
 		if(num1 > num2 && num1 > num3 && num1 > num4){
-			System.out.print("O número 1 é o maior");
+			System.out.println("O número 1 é o maior de todos");
 		}
-		else if(num2 > num1 && num2 > num3 && num2 > num4){
-			System.out.print("O número 2 é o maior");
+		if(num2 > num1 && num2 > num3 && num2 > num4){
+			System.out.println("O número 2 é o maior de todos");
 		}
-		else if(num3 > num1 && num3 > num2 && num3 > num4){
-			System.out.print("O número 3 é o maior");
+		if(num3 > num1 && num3 > num2 && num3 > num4){
+			System.out.println("O número 3 é o maior de todos");
 		}
-		else if(num4 > num1 && num4 > num2 && num4 > num3){
-			System.out.print("O número 4 é o maior");
+		if(num4 > num1 && num4 > num2 && num4 > num3){
+			System.out.println("O número 4 é o maior de todos");
 		}
+		if(!(num2 > num3) || num1 > num4){
+			System.out.println("Ganha a equipa 1");
+		} else{
+			System.out.println("Ganha a equipa 2");
+		}
+		
 	}
 
 }

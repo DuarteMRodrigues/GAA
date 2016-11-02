@@ -1,3 +1,4 @@
+import dia021116.Ciclos;
 import dia021116.Condicionais;
 import dia281016.AdivinhaNumero;
 import dia281016.BalancoGAA;
@@ -13,7 +14,8 @@ public class Principal {
 		//new CalculadoraSimples();
 		//new BalancoGAA();
 		//new AdivinhaNumero();
-		new Condicionais();
+		//new Condicionais();
+		new Ciclos();
 	}
 
 }
