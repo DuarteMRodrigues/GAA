@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Calculadora {
 	
 	public Calculadora() {
-		int num1 = 0, num2 = 1, escolha = 0, resultado = 0;
+		int num1 = 0, num2 = 1, escolha = 0;
 		
 		System.out.print("Introduza o primeiro numero: ");
 		num1 = (new Scanner(System.in)).nextInt();
@@ -20,28 +20,26 @@ public class Calculadora {
 			
 			switch (escolha){
 			case 1:
-				resultado = somar(num1, num2);
-				System.out.println("O resultado é: " + resultado);
+				num1 = somar(num1, num2);
+				System.out.println("O resultado é: " + num1);
 				break;
 			case 2:
-				resultado = subtrair(num1, num2);
-				System.out.println("O resultado é: " + resultado);
+				num1 = subtrair(num1, num2);
+				System.out.println("O resultado é: " + num1);
 				break;
 			case 3:
-				resultado = multiplicar(num1, num2);
-				System.out.println("O resultado é: " + resultado);
+				num1 = multiplicar(num1, num2);
+				System.out.println("O resultado é: " + num1);
 				break;
 			case 4:
-				resultado = dividir(num1, num2);
-				System.out.println("O resultado é: " + resultado);
+				num1 = dividir(num1, num2);
+				System.out.println("O resultado é: " + num1);
 				break;
 			default:
 				System.out.println("Operação inválida");
 				break;
 			}
-			System.out.print("Introduza o primeiro numero: ");
-			num1 = (new Scanner(System.in)).nextInt();
-			System.out.print("Introduza o segundo numero: ");
+			System.out.print("Introduza outro numero: ");
 			num2 = (new Scanner(System.in)).nextInt();
 		}
 		System.out.print("End");
