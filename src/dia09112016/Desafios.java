@@ -12,7 +12,7 @@ public class Desafios {
 	public void exercicio1(){
 		// Utilize um ciclo for para imprimir uma mensagem 5 vezes
 		// A mensagem deve ser introduzida pelo utilizador
-		// Utilize 2 Metodos. O 1º para introduzir a mensagem, e o 2º para imprimir a mensagem
+		// Utilize 2 Metodos. O 1º para ler a mensagem, e o 2º para imprimir a mensagem
 		// Dificuldade: Medio
 				
 		String msg="";
@@ -65,6 +65,7 @@ public class Desafios {
 	
 	public void exercicio3(){
 		// Crie um ciclo do while que faça somas infinitas.
+		// O valor das somas deve ser armazenado numa unica variavel 
 		// O ciclo so deve parar se o utilizador introduzir "0"
 		// No final o valor da soma total deve ser apresentado
 		// Dificuldade: Facil
