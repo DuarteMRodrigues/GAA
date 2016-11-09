@@ -64,6 +64,16 @@ public class Principal {
 		default:
 			System.out.println("Escolha Inválida.");
 		}
+		System.out.print("\n\n\n\n\nIntroduza \"0\" para utilizar outro programa: ");
+		escolha = (new Scanner(System.in)).nextInt();
+		if(escolha == 0){
+			String[] args1 = {};
+			Principal.main(args1);
+		}
+		else
+		{
+			
+		}
 	}
 
 }
