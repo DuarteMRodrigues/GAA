@@ -5,25 +5,33 @@ import java.util.Scanner;
 
 public class Blackjack {
 	
-	int valor = 0, valorDealer = 0, especial = 0, especialDealer = 0;
-	
 	public Blackjack() {
-		int escolha = 1, repetir = 1, qtdCartas = 0;
-		String cartaEspecifica = "";
+		int escolha = 1, repetir = 1, qtdCartas = 0, valor = 0, valorDealer = 0, especial = 0, especialDealer = 0;
+		String cartaEspecifica = "", cartaEspecificaDealer = "";
+		System.out.println("Consultar regras do Blackjack em: \"https://pt.wikipedia.org/wiki/Blackjack\"\n\nJoguem de forma responsavel!\n");
+		System.out.println("Clique no enter para continuar");
+		cartaEspecifica = (new Scanner(System.in)).nextLine();
 		
 		while(repetir != 0){
 			while(escolha == 1){
-				
-				if(valor >= 17 || valorDealer >=17 || qtdCartas > 4){
+				if(valor >= 17 || valorDealer >=17 || qtdCartas >= 2){
 					cartaEspecifica = cartas();
-					cartasDealer();
+					cartaEspecificaDealer = cartasDealer();
+					especial += cartaEspecial(cartaEspecifica);
+					especialDealer += cartaEspecialDealer(cartaEspecificaDealer);
+					valor += valorCarta(cartaEspecifica, especial);
+					valorDealer += valorCartaDealer(cartaEspecificaDealer, especial);
 					System.out.print("\nRecebeu a carta: \"" + cartaEspecifica + "\"\n");
 					System.out.print("Tem " + valor + " pontos\n\n");
 				}
 				
-				while (valor <=16 && valorDealer <=16 && qtdCartas < 5){
+				while (valor <=16 && valorDealer <=16 && qtdCartas < 2){
 					cartaEspecifica = cartas();
-					cartasDealer();
+					cartaEspecificaDealer = cartasDealer();
+					especial += cartaEspecial(cartaEspecifica);
+					especialDealer += cartaEspecialDealer(cartaEspecificaDealer);
+					valor += valorCarta(cartaEspecifica, especial);
+					valorDealer += valorCartaDealer(cartaEspecificaDealer, especial);
 					qtdCartas++;
 					System.out.print("\nRecebeu a carta: \"" + cartaEspecifica + "\"\n");
 					System.out.print("Tem " + valor + " pontos\n\n");
@@ -53,11 +61,12 @@ public class Blackjack {
 				
 				if(escolha == 2 && valor > valorDealer){
 					System.out.print("Tem mais pontos do que o dealer!\n\nGanhou");
-					escolha = 2;
 				}
 				else if(escolha == 2 && valorDealer > valor){
 					System.out.print("Tem menos pontos do que o dealer!\n\nPerdeu");
-					escolha = 2;
+				}
+				else if(escolha == 2 && valor == valorDealer){
+					System.out.print("Tem os mesmos pontos que o dealer!\n\nEmpate");
 				}
 			}
 			escolha = 1;qtdCartas = 0;
@@ -68,123 +77,222 @@ public class Blackjack {
 	}
 	
 	public String cartas(){
-		int carta;
+		int carta, valorMax = 12;
 		String cartaEspecifica = "";
 		
 		Random r = new Random();
-		carta = r.nextInt(12);
+		carta = r.nextInt(valorMax);
 		
-		if(carta == 0 && especial > 0){
-			valor += 11;
+		if(carta == 0){
 			cartaEspecifica = "AS";
 		}
-		else if(carta == 0 && especial == 0){
-			valor += 1;
+		else if(carta == 0){
 			cartaEspecifica = "AS";
 		}
 		else if(carta == 1){
-			valor += 2;
 			cartaEspecifica = "2";
 		}
 		else if(carta == 2){
-			valor += 3;
 			cartaEspecifica = "3";
 		}
 		else if(carta == 3){
-			valor += 4;
 			cartaEspecifica = "4";
 		}
 		else if(carta == 4){
-			valor += 5;
 			cartaEspecifica = "5";
 		}
 		else if(carta == 5){
-			valor += 6;
 			cartaEspecifica = "6";
 		}
 		else if(carta == 6){
-			valor += 7;
 			cartaEspecifica = "7";
 		}
 		else if(carta == 7){
-			valor += 8;
 			cartaEspecifica = "8";
 		}
 		else if(carta == 8){
-			valor += 9;
 			cartaEspecifica = "9";
 		}
 		else if(carta == 9){
-			valor += 10;
 			cartaEspecifica = "10";
 		}
 		else if(carta == 10){
-			valor += 10;
-			especial += 1;
 			cartaEspecifica = "Valete";
 		}
 		else if(carta == 11){
-			valor += 10;
-			especial += 1;
 			cartaEspecifica = "Rei";
 		}
 		else{
-			valor += 10;
-			especial += 1;
 			cartaEspecifica = "Rainha";
 		}
 		return cartaEspecifica;
 	}
 	
-	public void cartasDealer(){
-		int carta;
+	public String cartasDealer(){
+		int carta, valorMax = 12;
+		String cartaEspecificaDealer="";
 		Random r = new Random();
-		carta = r.nextInt(12);
+		carta = r.nextInt(valorMax);
 		
-		if(carta == 0 && especialDealer > 0){
-			valorDealer += 11;
+		
+		if(carta == 0){
+			cartaEspecificaDealer="AS";
 		}
-		else if(carta == 0 && especialDealer == 0){
-			valorDealer += 1;
+		else if(carta == 0){
+			cartaEspecificaDealer="AS";
 		}
 		else if(carta == 1){
-			valorDealer += 2;
+			cartaEspecificaDealer="2";
 		}
 		else if(carta == 2){
-			valorDealer += 3;
+			cartaEspecificaDealer="3";
 		}
 		else if(carta == 3){
-			valorDealer += 4;
+			cartaEspecificaDealer="4";
 		}
 		else if(carta == 4){
-			valorDealer += 5;
+			cartaEspecificaDealer="5";
 		}
 		else if(carta == 5){
-			valorDealer += 6;
+			cartaEspecificaDealer="6";
 		}
 		else if(carta == 6){
-			valorDealer += 7;
+			cartaEspecificaDealer="7";
 		}
 		else if(carta == 7){
-			valorDealer += 8;
+			cartaEspecificaDealer="8";
 		}
 		else if(carta == 8){
-			valorDealer += 9;
+			cartaEspecificaDealer="9";
 		}
 		else if(carta == 9){
-			valorDealer += 10;
+			cartaEspecificaDealer="10";
 		}
 		else if(carta == 10){
-			valorDealer += 10;
-			especialDealer += 1;
+			cartaEspecificaDealer="Valete";
 		}
 		else if(carta == 11){
-			valorDealer += 10;
-			especialDealer += 1;
+			cartaEspecificaDealer="Rei";
 		}
 		else{
-			valorDealer += 10;
-			especialDealer += 1;
+			cartaEspecificaDealer="Rainha";
 		}
+		return cartaEspecificaDealer;
+	}
+
+	public int cartaEspecial(String cartaEspecifica){
+		int especial = 0;
+		
+		if(cartaEspecifica == "Rei"){
+			especial += 1;
+		}
+		else if(cartaEspecifica == "Rainha"){
+			especial += 1;
+		}
+		else if(cartaEspecifica == "Valete"){
+			especial += 1;
+		}
+			
+		return especial;
+	}
+	
+	public int cartaEspecialDealer(String cartaEspecifica){
+		int especial = 0;
+		
+		if(cartaEspecifica == "Rei"){
+			especial += 1;
+		}
+		else if(cartaEspecifica == "Rainha"){
+			especial += 1;
+		}
+		else if(cartaEspecifica == "Valete"){
+			especial += 1;
+		}
+			
+		return especial;
+	}
+	
+	public int valorCarta(String cartaEspecifica, int especial){
+		int valor = 0;
+		
+		if(cartaEspecifica == "AS"){
+			valor = 1;
+		}
+		else if(cartaEspecifica == "AS" && especial >= 1){
+			valor = 11;
+		}
+		else if(cartaEspecifica == "2"){
+			valor = 2;
+		}
+		else if(cartaEspecifica == "3"){
+			valor = 3;
+		}
+		else if(cartaEspecifica == "4"){
+			valor = 4;
+		}
+		else if(cartaEspecifica == "5"){
+			valor = 5;
+		}
+		else if(cartaEspecifica == "6"){
+			valor = 6;
+		}
+		else if(cartaEspecifica == "7"){
+			valor = 7;
+		}
+		else if(cartaEspecifica == "8"){
+			valor = 8;
+		}
+		else if(cartaEspecifica == "9"){
+			valor = 9;
+		}
+		else if(cartaEspecifica == "10"){
+			valor = 10;
+		}
+		else{
+			valor = 10;
+		}
+		return valor;
+	}
+
+	public int valorCartaDealer(String cartaEspecifica, int especial){
+		int valor = 0;
+		
+		if(cartaEspecifica == "AS"){
+			valor = 1;
+		}
+		else if(cartaEspecifica == "AS" && especial >= 1){
+			valor = 11;
+		}
+		else if(cartaEspecifica == "2"){
+			valor = 2;
+		}
+		else if(cartaEspecifica == "3"){
+			valor = 3;
+		}
+		else if(cartaEspecifica == "4"){
+			valor = 4;
+		}
+		else if(cartaEspecifica == "5"){
+			valor = 5;
+		}
+		else if(cartaEspecifica == "6"){
+			valor = 6;
+		}
+		else if(cartaEspecifica == "7"){
+			valor = 7;
+		}
+		else if(cartaEspecifica == "8"){
+			valor = 8;
+		}
+		else if(cartaEspecifica == "9"){
+			valor = 9;
+		}
+		else if(cartaEspecifica == "10"){
+			valor = 10;
+		}
+		else{
+			valor = 10;
+		}
+		return valor;
 	}
 }
