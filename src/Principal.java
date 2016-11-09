@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 import dia021116.Blackjack;
 import dia021116.Calculadora;
 import dia021116.Ciclos;
@@ -15,17 +17,53 @@ public class Principal {
 	}
 	
 	public static void main(String[] args){
-		//new CalculadoraSimples();
-		//new BalancoGAA();
-		//new AdivinhaNumero();
-		//new Condicionais();
-		//new Ciclos();
-		//new Calculadora();
-		//new Blackjack();
-		//new TreinoArrays();
-		//new Exercicio1();
-		//new Exercicio2();
-		new Desafios();
+		
+		int escolha=0;
+		
+		System.out.println("Escolha um programa: ");
+		System.out.println("1: CalculadoraSimples");
+		System.out.println("2: BalancoGAA");
+		System.out.println("3: AdivinhaNumero");
+		System.out.println("4: Condicionais");
+		System.out.println("5: Ciclos");
+		System.out.println("6: Calculadora");
+		System.out.println("7: BlackJack");
+		System.out.println("8: TreinoArrays");
+		System.out.println("9: Desafios");
+		System.out.print("Escolha: ");
+		escolha = (new Scanner(System.in)).nextInt();
+		
+		switch (escolha){
+		case 1:
+			new CalculadoraSimples();
+			break;
+		case 2:
+			new BalancoGAA();
+			break;
+		case 3:
+			new AdivinhaNumero();
+			break;
+		case 4:
+			new Condicionais();
+			break;
+		case 5:
+			new Ciclos();
+			break;
+		case 6:
+			new Calculadora();
+			break;
+		case 7:
+			new Blackjack();
+			break;
+		case 8:
+			new TreinoArrays();
+			break;
+		case 9:
+			new Desafios();
+			break;
+		default:
+			System.out.println("Escolha Inválida.");
+		}
 	}
 
 }
