@@ -12,20 +12,30 @@ public class Blackjack {
 		System.out.println("Clique no enter para continuar");
 		cartaEspecifica = (new Scanner(System.in)).nextLine();
 		
+		// Repete o jogo até o utilizador decidir parar.
 		while(repetir != 0){
+			// Dá cartas ao utilizador até este parar de as pedir, ou o jogo acabar.
 			while(escolha == 1){
-				if(valor >= 17 || valorDealer >=17 || qtdCartas >= 2){
-					cartaEspecifica = cartas();
-					cartaEspecificaDealer = cartasDealer();
-					especial += cartaEspecial(cartaEspecifica);
-					especialDealer += cartaEspecialDealer(cartaEspecificaDealer);
-					valor += valorCarta(cartaEspecifica, especial);
+				// Quando o utilizador e o dealer recebem 2 cartas, o utilizador pode decidir se quer mais cartas ou nao
+				if(qtdCartas >= 2){
+					// Recebe uma carta aleatória para o utilizador
+					cartaEspecifica = cartas(); 
+					// Recebe uma carta aleatória para o computador
+					cartaEspecificaDealer = cartasDealer(); 
+					// Aumenta o valor à variavel especial, que influencia o valor do AS
+					especial += cartaEspecial(cartaEspecifica); 
+					// Aumenta o valor à variavel especial para o dealer, que influencia o valor do AS
+					especialDealer += cartaEspecialDealer(cartaEspecificaDealer); 
+					// Consoante a carta que calhou, o utilizador recebe X pontos.
+					valor += valorCarta(cartaEspecifica, especial); 
+					// Consoante a carta que calhou, o dealer recebe X pontos.
 					valorDealer += valorCartaDealer(cartaEspecificaDealer, especial);
 					System.out.print("\nRecebeu a carta: \"" + cartaEspecifica + "\"\n");
 					System.out.print("Tem " + valor + " pontos\n\n");
 				}
-				
-				while (valor <=16 && valorDealer <=16 && qtdCartas < 2){
+				// Enquanto o utilizador e o Dealer nao receberem duas cartas, nao podem fazer jogadas
+				// Dentro do ciclo executa-se o mesmo processo do if acima. 
+				while(qtdCartas < 2){
 					cartaEspecifica = cartas();
 					cartaEspecificaDealer = cartasDealer();
 					especial += cartaEspecial(cartaEspecifica);
@@ -37,8 +47,10 @@ public class Blackjack {
 					System.out.print("Tem " + valor + " pontos\n\n");
 				}
 				
+				// Se o utilizador tiver 21 pontos ganha por blackjack. 
 				if(valor == 21){
 					System.out.print("Blackjack!\n\nGanhou");
+					// A escolha = 3, server para sair do ciclo de jogo e para o utilizador nao poder pedir mais cartas, pois o jogo ja terminou.
 					escolha = 3;
 				}
 				else if(valor > 21){
@@ -54,11 +66,13 @@ public class Blackjack {
 					escolha = 3;
 				}
 				
+				// se o jogo nao tiver terminado, o jogo pode pedir ou nao, outra carta
 				if(escolha != 3){
 					System.out.print("Pedir outra carta?\n1 - Sim\n2 - Nao\nEscolha: ");
 					escolha = (new Scanner(System.in)).nextInt();
 				}
 				
+				// se o utilizador nao quiser mais cartas, o jogo acaba e faz as proximas 3 verificações
 				if(escolha == 2 && valor > valorDealer){
 					System.out.print("Tem mais pontos do que o dealer!\n\nGanhou");
 				}
@@ -69,6 +83,7 @@ public class Blackjack {
 					System.out.print("Tem os mesmos pontos que o dealer!\n\nEmpate");
 				}
 			}
+			// reinicialização do valor das variáveis
 			escolha = 1;qtdCartas = 0;
 			valor = 0;valorDealer = 0;especial = 0;especialDealer = 0;
 			System.out.print("\n\nInsira qualquer valor excepto 0 para fazer mais jogos: ");
@@ -77,11 +92,11 @@ public class Blackjack {
 	}
 	
 	public String cartas(){
-		int carta, valorMax = 12;
+		int carta;
 		String cartaEspecifica = "";
 		
 		Random r = new Random();
-		carta = r.nextInt(valorMax);
+		carta = r.nextInt(12);
 		
 		if(carta == 0){
 			cartaEspecifica = "AS";
@@ -129,10 +144,10 @@ public class Blackjack {
 	}
 	
 	public String cartasDealer(){
-		int carta, valorMax = 12;
+		int carta;
 		String cartaEspecificaDealer="";
 		Random r = new Random();
-		carta = r.nextInt(valorMax);
+		carta = r.nextInt(12);
 		
 		
 		if(carta == 0){
