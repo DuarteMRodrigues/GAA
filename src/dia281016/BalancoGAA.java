@@ -53,10 +53,10 @@ public class BalancoGAA {
 			System.out.print("\n\n\nbalanço positivo");
 		}
 		else if (balanco < 0){
-			System.out.print("\n\n\nbalanço positivo");
+			System.out.print("\n\n\nbalanço negativo");
 		}
 		else
-			System.out.print("\n\n\nbalanço positivo");
+			System.out.print("\n\n\nbalanço nulo");
 	}
 }
 
