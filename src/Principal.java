@@ -5,6 +5,7 @@ import dia021116.Calculadora;
 import dia021116.Ciclos;
 import dia021116.Condicionais;
 import dia09112016.Desafios;
+import dia09112016.GolosDaLiga;
 import dia09112016.TreinoArrays;
 import dia281016.AdivinhaNumero;
 import dia281016.BalancoGAA;
@@ -30,6 +31,7 @@ public class Principal {
 		System.out.println("7: BlackJack");
 		System.out.println("8: TreinoArrays");
 		System.out.println("9: Desafios");
+		System.out.println("10: Golos da Liga");
 		System.out.print("Escolha: ");
 		escolha = (new Scanner(System.in)).nextInt();
 		
@@ -60,6 +62,9 @@ public class Principal {
 			break;
 		case 9:
 			new Desafios();
+			break;
+		case 10:
+			new GolosDaLiga();
 			break;
 		default:
 			System.out.println("Escolha Inválida.");
