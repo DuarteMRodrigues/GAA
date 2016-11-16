@@ -30,8 +30,8 @@ public class Desafios {
 		
 		String[] mensagens = new String[5];
 		int[] verificacao = new int[5];
-		verificacao[0] = -1;
-		int contador=0, ordem = 0;
+		int contador = 0, ordem = 0;
+		boolean verificacao0 = false;
 		
 		for(int i=0; i<5; i++){
 			System.out.print("Escreva a mensagem" + (i+1) + ": ");
@@ -43,12 +43,15 @@ public class Desafios {
 			ordem = r.nextInt(5);
 			verificacao[contador] = ordem;
 			for(int i=0; i<5; i++){
-				if (verificacao[i] == ordem){
+				if(verificacao0 == false && ordem == 0){
+					verificacao0 = true;
+					i=5;
+				}
+				else if (verificacao[i] == ordem){
 					if(i!=contador){
 						ordem = r.nextInt(5);
 						verificacao[contador] = ordem;
 						i=-1;
-						
 					}
 				}
 			}

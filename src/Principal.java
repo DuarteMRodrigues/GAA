@@ -18,7 +18,6 @@ public class Principal {
 	}
 	
 	public static void main(String[] args){
-		
 		int escolha=0;
 		
 		System.out.println("Escolha um programa: ");
@@ -68,6 +67,7 @@ public class Principal {
 			break;
 		default:
 			System.out.println("Escolha Inválida.");
+			break;
 		}
 		System.out.print("\n\n\n\n\nIntroduza \"0\" para utilizar outro programa: ");
 		escolha = (new Scanner(System.in)).nextInt();
@@ -75,10 +75,7 @@ public class Principal {
 			String[] args1 = {};
 			Principal.main(args1);
 		}
-		else
-		{
-			
-		}
+		else;
 	}
 
 }
